@@ -1,7 +1,0 @@
-index:
-    path: /
-    controller: App\Controller\BarController::index
-
-contact:
-    path: /bar/{slug}
-    controller: App\Controller\BarController::contact
