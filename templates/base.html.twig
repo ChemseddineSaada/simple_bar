@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include 'bar/partials/menu.html.twig' %}
+        <img src="{{ asset('assets/images/beer.jpg') }}" {{app.request.get('_route') == 'bar' ? 'visible' : 'hidden' }} />
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+        <h1>Beers</h1>
+        <ul class="nav-list">{% block beers_list %}{% endblock %}</ul>
+
+        <footer>{% block footer %}All rights reserved{% endblock %}</footer>
+    </body>
+</html>

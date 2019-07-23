@@ -1,0 +1,40 @@
+
+# ajoute une image au répertoire git
+git add .
+
+# ajoute une image à versionner
+git commit -m "nom_de_la_version"
+
+# publier l'image sur le serveur Git
+git push -u origin "nom_de_la_branche"
+
+# afficher les branches
+git branch 
+
+# s'identifier 
+git config --global user.email "mail_adress@mail_domain.com"
+
+# obtenir le status du répertoire
+git status
+
+# afficher les bundles installés
+php bin/console
+
+# server propre a Symfony en console
+composer require server --dev
+​
+# Le système d'annotations pour les routes
+composer require annotations
+​
+# le moteur de templating
+composer require twig
+​
+# les makes pour créer par exemple un contrôleur en ligne de commande
+composer require symfony/maker-bundle --dev
+
+
+# Création d'un controleur 
+php bin/console make:controller "Nom du controleur"
+
+# Utilisation des assets
+composer require symfony/asset

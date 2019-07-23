@@ -1,0 +1,32 @@
+{# Permet d'étendre du template de base #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ title }}{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/the_simple_bar/src/Controller/BarController.php'|file_link(0) }}">src/Controller/BarController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/the_simple_bar/templates/bar/index.html.twig'|file_link(0) }}">templates/bar/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block beers_list %}
+    {% for beer in beers %}
+        <li>{{ beer }}</li>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}{{ parent() }}{% endblock %}
