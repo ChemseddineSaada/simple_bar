@@ -9,12 +9,13 @@
             <li class="nav-item">
                 <a href="{{ path('bar') }}" class="nav-link {{ app.request.get('_route') == 'bar' ? 'active' }}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a href="{{ path('bar') }}" class="nav-link {{ app.request.get('_route') == 'bar' ? 'active' }}">Features</a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ path('show_beer',{'slug' : 1}) }}" class="nav-link {{ app.request.get('_route') == 'show_beer' ? 'active' }}">Belgium beers</a>
-            </li>
+                {% for slug, categorie in categories %}
+
+                    <li class="nav-item"><a href="{{ path('categorie' , { 'slug' : slug } ) }}" class="nav-link {{ app.request.get('_route') == categorie.title ? 'active' }}">{{ categorie.title |capitalize}}</a></li>
+
+                {% endfor %}
+                <li class="nav-item"><a href="{{ path('verygood') }}" class="nav-link {{ app.request.get('_route') == 'verygood' ? 'active' }}">Very good</a></a></li>
+                <li class="nav-item"><a href="{{ path('bestbeer') }}" class="nav-link {{ app.request.get('_route') == 'bestbeer' ? 'active' }}">Best Beer</a></a></li>
         </ul>
     </div>
 </nav>

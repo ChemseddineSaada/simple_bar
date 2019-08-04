@@ -11,15 +11,36 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% endblock %}
 
+{% block name %}{{title}}{% endblock %}
+
 {% block beers_list %}
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Weight</td>
+        <td>Beers</td>
+    </tr>
+    {% for client in clients %}
 
-    {% for beer in beers %}
+        <tr>           
+            <td>{{ client.name }}</td>
 
-        <li>{{ beer.title }}</li>
 
+
+            <td>{{ client.getWeight() }}</td>
+
+
+
+            <td>
+                <ul>
+                    {% for beer in client.getBeer %}
+                        <li>{{ beer.title }}</li>
+                    {% endfor %}
+                </ul>
+            </td>        
+        </tr>
     {% endfor %}
-
+</table>
 {% endblock %}
-
 
 {% block footer %}{{ parent() }}{% endblock %}

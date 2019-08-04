@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="dashboard__navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% for message in app.flashes('notice') %}
+  <div class="flash-notice">
+    {{ message }}
+  </div>
+{% endfor %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Country</th>
+        <th scope="col">Categories/y</th>
+        <th scope="col">Datetime</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for beer in pagination %}
+        <tr>
+            <th scope="col">{{ beer.id }}</th>
+            <th scope="col">{{ beer.title }}</th>
+
+            <th scope="col">{% if beer.countryId != null %}{{ beer.countryId.name }}{% endif %}</th>
+            <th scope="col">{% for categorie in beer.categorie %} {{ categorie.title }} {% endfor %}</th>
+
+            <th scope="col">{{ beer.getPublishedAt.format('d-m-Y')}}</th>
+            <th scope="col"><a class="badge badge-primary" href="{{ path('admin.beer.update',{'id':beer.id})}}">Update</a></th>
+            <th scope="col"><a class="badge badge-danger" href="{{ path('admin.beer.delete',{'id':beer.id})}}">Delete</a></th>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="dashboard__navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock %}

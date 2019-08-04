@@ -1,7 +1,7 @@
 {# Permet d'étendre du template de base #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block stylesheets %}
 <style>
@@ -12,13 +12,13 @@
 {% endblock %}
 
 {% block beers_list %}
+    <ul>
+        {% for beer in beers %}
 
-    {% for beer in beers %}
+            <li>{{ beer.title }}</li>
 
-        <li>{{ beer.title }}</li>
-
-    {% endfor %}
-
+        {% endfor %}
+    </ul>
 {% endblock %}
 
 

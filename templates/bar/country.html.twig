@@ -11,15 +11,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% endblock %}
 
+{% block name %}{{title}}{% endblock %}
+
 {% block beers_list %}
-
-    {% for beer in beers %}
-
-        <li>{{ beer.title }}</li>
-
-    {% endfor %}
-
+{% for beers in country.getBeersNew %}
+        <li>{{ beers.title }} Beer</li>
+{% endfor %}
 {% endblock %}
-
 
 {% block footer %}{{ parent() }}{% endblock %}

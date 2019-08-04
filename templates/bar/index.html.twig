@@ -12,21 +12,22 @@
 {% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/the_simple_bar/src/Controller/BarController.php'|file_link(0) }}">src/Controller/BarController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/the_simple_bar/templates/bar/index.html.twig'|file_link(0) }}">templates/bar/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
 
 {% block beers_list %}
     {% for beer in beers %}
-        <li>{{ beer }}</li>
+        <li>{{ beer.title }}</li>
+        <small>Published at : <b>{{ beer.publishedAt | date('Y-m-d')}}</b></small> 
+
+        {% if beer.countryId %}
+            {% for slug, countryId in countries | filter( countryId => countryId.getId == beer.getCountryId.id )  %}                 
+                </br><a href="{{ path('show_country', { 'slug' : slug }) }}">
+                {{beer.countryId.name }}
+                </a>
+            {% endfor %}   
+        {% endif %}
     {% endfor %}
+
 {% endblock %}
 
-{% block footer %}{{ parent() }}{% endblock %}
+{% block footer %}All copyright reserved 2019{% endblock %}

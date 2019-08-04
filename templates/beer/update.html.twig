@@ -1,0 +1,21 @@
+{# templates/beer/create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+{{ form_row(form.title, { 'value': beer.title }) }}
+{{ form_row(form.description, { 'value': beer.description }) }}
+{{ form_row(form.Price, { 'value': beer.Price }) }}
+{{ form_row(form.published_at, { 'value' : "now"|date("Y-m-d") })}}
+{{ form_row(form.categorie, { 'value': beer.categorie }) }}
+{{ form_row(form.country_id, { 'value': beer.countryId }) }}
+
+
+
+{{ form_end(form) }}
+
+{% endblock %}
